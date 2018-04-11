@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eEw-Zf-F2X">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Live Stories Main Controller-->
+        <scene sceneID="U7j-22-atC">
+            <objects>
+                <viewController storyboardIdentifier="mainStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eEw-Zf-F2X" customClass="LiveStoriesMainController" customModule="LiveStories" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W27-4I-WQb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVY-3G-Dh2">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="&lt;" id="Qvh-km-ky6">
+                                        <connections>
+                                            <segue destination="eEw-Zf-F2X" kind="custom" identifier="backSegue" customClass="BackwardSegue" customModule="LiveStories" customModuleProvider="target" id="wVV-Il-4SC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="gjq-Ov-IIA"/>
+                                    <barButtonItem title="First Item" id="d6F-ny-c7N">
+                                        <connections>
+                                            <segue destination="eEw-Zf-F2X" kind="custom" identifier="firstSegue" customClass="BackwardSegue" customModule="LiveStories" customModuleProvider="target" id="u8a-Fu-n4j"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Vis-Z5-1CV"/>
+                                    <barButtonItem title="Last Item" id="azi-HC-Pj4">
+                                        <connections>
+                                            <segue destination="eEw-Zf-F2X" kind="custom" identifier="lastSegue" customClass="ForwardSegue" customModule="LiveStories" customModuleProvider="target" id="wHP-3x-LG2"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="9R2-cL-66V"/>
+                                    <barButtonItem title="&gt;" id="CHV-9x-HMT">
+                                        <connections>
+                                            <segue destination="eEw-Zf-F2X" kind="custom" identifier="nextSegue" customClass="ForwardSegue" customModule="LiveStories" customModuleProvider="target" id="NVU-B0-LG4"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7f-sc-pGB">
+                                <rect key="frame" x="0.0" y="20" width="375" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live Stories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYY-lI-rez">
+                                        <rect key="frame" x="121.5" y="15" width="132" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="bYY-lI-rez" firstAttribute="centerX" secondItem="R7f-sc-pGB" secondAttribute="centerX" id="5sM-0i-Da2"/>
+                                    <constraint firstAttribute="height" constant="60" id="70W-mX-Ysr"/>
+                                    <constraint firstItem="bYY-lI-rez" firstAttribute="centerY" secondItem="R7f-sc-pGB" secondAttribute="centerY" id="hgV-1e-X5w"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pub-k5-Wqt">
+                                <rect key="frame" x="0.0" y="80" width="375" height="543"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Pub-k5-Wqt" firstAttribute="top" secondItem="R7f-sc-pGB" secondAttribute="bottom" id="6tT-Vc-sFl"/>
+                            <constraint firstItem="R7f-sc-pGB" firstAttribute="trailing" secondItem="sNs-YD-ZAU" secondAttribute="trailing" id="Boq-em-ktg"/>
+                            <constraint firstItem="R7f-sc-pGB" firstAttribute="leading" secondItem="sNs-YD-ZAU" secondAttribute="leading" id="Vw2-15-4Tk"/>
+                            <constraint firstItem="EVY-3G-Dh2" firstAttribute="top" secondItem="Pub-k5-Wqt" secondAttribute="bottom" id="d5a-5R-Del"/>
+                            <constraint firstItem="EVY-3G-Dh2" firstAttribute="leading" secondItem="sNs-YD-ZAU" secondAttribute="leading" id="eHg-Sg-UwO"/>
+                            <constraint firstItem="EVY-3G-Dh2" firstAttribute="trailing" secondItem="sNs-YD-ZAU" secondAttribute="trailing" id="eIv-0I-GzM"/>
+                            <constraint firstItem="EVY-3G-Dh2" firstAttribute="bottom" secondItem="sNs-YD-ZAU" secondAttribute="bottom" id="n0f-lp-KHu"/>
+                            <constraint firstItem="Pub-k5-Wqt" firstAttribute="leading" secondItem="sNs-YD-ZAU" secondAttribute="leading" id="vBs-yc-Thi"/>
+                            <constraint firstItem="EVY-3G-Dh2" firstAttribute="top" secondItem="Pub-k5-Wqt" secondAttribute="bottom" id="xiy-Hz-Y6K"/>
+                            <constraint firstItem="Pub-k5-Wqt" firstAttribute="trailing" secondItem="sNs-YD-ZAU" secondAttribute="trailing" id="yxq-OH-f5X"/>
+                            <constraint firstItem="R7f-sc-pGB" firstAttribute="top" secondItem="sNs-YD-ZAU" secondAttribute="top" id="zyy-lm-ssv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sNs-YD-ZAU"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="map-g3-AFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="493.60000000000002" y="-70.614692653673174"/>
+        </scene>
+    </scenes>
+</document>
