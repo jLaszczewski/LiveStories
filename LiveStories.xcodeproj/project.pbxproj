@@ -19,6 +19,7 @@
 		0596AEF7207E3A7C003E2726 /* UIView+backShadowAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AEF6207E3A7C003E2726 /* UIView+backShadowAnimation.swift */; };
 		0596AEF9207E4192003E2726 /* SwipeBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AEF8207E4192003E2726 /* SwipeBack.swift */; };
 		0596AEFB207E42F0003E2726 /* SwipeFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AEFA207E42F0003E2726 /* SwipeFront.swift */; };
+		0596AEFE207E4843003E2726 /* LiveStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AEFD207E4843003E2726 /* LiveStory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		0596AEF6207E3A7C003E2726 /* UIView+backShadowAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+backShadowAnimation.swift"; sourceTree = "<group>"; };
 		0596AEF8207E4192003E2726 /* SwipeBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeBack.swift; sourceTree = "<group>"; };
 		0596AEFA207E42F0003E2726 /* SwipeFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFront.swift; sourceTree = "<group>"; };
+		0596AEFD207E4843003E2726 /* LiveStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		0596AED7207E33D6003E2726 /* LiveStories */ = {
 			isa = PBXGroup;
 			children = (
+				0596AEFC207E4816003E2726 /* Model */,
 				0596AEF1207E3A4E003E2726 /* public */,
 				0596AEEA207E34C6003E2726 /* View */,
 				0596AED8207E33D6003E2726 /* AppDelegate.swift */,
@@ -99,6 +102,14 @@
 				0596AEFA207E42F0003E2726 /* SwipeFront.swift */,
 			);
 			path = public;
+			sourceTree = "<group>";
+		};
+		0596AEFC207E4816003E2726 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0596AEFD207E4843003E2726 /* LiveStory.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +186,7 @@
 				0596AEEE207E382F003E2726 /* ForwardSegue.swift in Sources */,
 				0596AEDB207E33D6003E2726 /* ViewController.swift in Sources */,
 				0596AEF5207E3A66003E2726 /* customSegue.swift in Sources */,
+				0596AEFE207E4843003E2726 /* LiveStory.swift in Sources */,
 				0596AEF9207E4192003E2726 /* SwipeBack.swift in Sources */,
 				0596AEFB207E42F0003E2726 /* SwipeFront.swift in Sources */,
 				0596AEF7207E3A7C003E2726 /* UIView+backShadowAnimation.swift in Sources */,
