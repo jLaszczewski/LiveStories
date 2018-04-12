@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0596AED9207E33D6003E2726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AED8207E33D6003E2726 /* AppDelegate.swift */; };
-		0596AEDB207E33D6003E2726 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AEDA207E33D6003E2726 /* ViewController.swift */; };
+		0596AEDB207E33D6003E2726 /* LiveStoriesMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AEDA207E33D6003E2726 /* LiveStoriesMainController.swift */; };
 		0596AEDE207E33D6003E2726 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0596AEDC207E33D6003E2726 /* Main.storyboard */; };
 		0596AEE0207E33D7003E2726 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0596AEDF207E33D7003E2726 /* Assets.xcassets */; };
 		0596AEE3207E33D7003E2726 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0596AEE1207E33D7003E2726 /* LaunchScreen.storyboard */; };
@@ -20,12 +20,13 @@
 		0596AEF9207E4192003E2726 /* SwipeBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AEF8207E4192003E2726 /* SwipeBack.swift */; };
 		0596AEFB207E42F0003E2726 /* SwipeFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AEFA207E42F0003E2726 /* SwipeFront.swift */; };
 		0596AEFE207E4843003E2726 /* LiveStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AEFD207E4843003E2726 /* LiveStory.swift */; };
+		0596AF03207F7FF0003E2726 /* ImagePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AF02207F7FF0003E2726 /* ImagePopoverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0596AED5207E33D6003E2726 /* LiveStories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveStories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0596AED8207E33D6003E2726 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0596AEDA207E33D6003E2726 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0596AEDA207E33D6003E2726 /* LiveStoriesMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStoriesMainController.swift; sourceTree = "<group>"; };
 		0596AEDD207E33D6003E2726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0596AEDF207E33D7003E2726 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0596AEE2207E33D7003E2726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +39,7 @@
 		0596AEF8207E4192003E2726 /* SwipeBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeBack.swift; sourceTree = "<group>"; };
 		0596AEFA207E42F0003E2726 /* SwipeFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFront.swift; sourceTree = "<group>"; };
 		0596AEFD207E4843003E2726 /* LiveStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStory.swift; sourceTree = "<group>"; };
+		0596AF02207F7FF0003E2726 /* ImagePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopoverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,11 +72,11 @@
 		0596AED7207E33D6003E2726 /* LiveStories */ = {
 			isa = PBXGroup;
 			children = (
+				0596AF01207F7FAC003E2726 /* Controllers */,
 				0596AEFC207E4816003E2726 /* Model */,
 				0596AEF1207E3A4E003E2726 /* public */,
 				0596AEEA207E34C6003E2726 /* View */,
 				0596AED8207E33D6003E2726 /* AppDelegate.swift */,
-				0596AEDA207E33D6003E2726 /* ViewController.swift */,
 				0596AEDF207E33D7003E2726 /* Assets.xcassets */,
 				0596AEE1207E33D7003E2726 /* LaunchScreen.storyboard */,
 				0596AEE4207E33D7003E2726 /* Info.plist */,
@@ -110,6 +112,15 @@
 				0596AEFD207E4843003E2726 /* LiveStory.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0596AF01207F7FAC003E2726 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0596AEDA207E33D6003E2726 /* LiveStoriesMainController.swift */,
+				0596AF02207F7FF0003E2726 /* ImagePopoverViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,10 +195,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0596AEEE207E382F003E2726 /* ForwardSegue.swift in Sources */,
-				0596AEDB207E33D6003E2726 /* ViewController.swift in Sources */,
+				0596AEDB207E33D6003E2726 /* LiveStoriesMainController.swift in Sources */,
 				0596AEF5207E3A66003E2726 /* customSegue.swift in Sources */,
 				0596AEFE207E4843003E2726 /* LiveStory.swift in Sources */,
 				0596AEF9207E4192003E2726 /* SwipeBack.swift in Sources */,
+				0596AF03207F7FF0003E2726 /* ImagePopoverViewController.swift in Sources */,
 				0596AEFB207E42F0003E2726 /* SwipeFront.swift in Sources */,
 				0596AEF7207E3A7C003E2726 /* UIView+backShadowAnimation.swift in Sources */,
 				0596AEF0207E3848003E2726 /* BackwardSegue.swift in Sources */,
