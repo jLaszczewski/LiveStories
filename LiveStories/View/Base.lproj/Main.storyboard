@@ -96,6 +96,51 @@ Expressions</string>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pub-k5-Wqt">
                                 <rect key="frame" x="0.0" y="80" width="375" height="543"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StoryCell" rowHeight="92" id="F1d-rj-nUu" customClass="StoryCell" customModule="LiveStories" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="92"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F1d-rj-nUu" id="Wrb-rc-7m4">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="91.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="e5h-TL-obW">
+                                                    <rect key="frame" x="15" y="10" width="345" height="71.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AutorLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tx0-uf-ch7">
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="OZv-No-WXJ"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKx-h5-Ncp">
+                                                            <rect key="frame" x="0.0" y="25" width="345" height="46.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="e5h-TL-obW" firstAttribute="top" secondItem="Wrb-rc-7m4" secondAttribute="top" constant="10" id="3Ug-Ui-vOR"/>
+                                                <constraint firstItem="e5h-TL-obW" firstAttribute="leading" secondItem="Wrb-rc-7m4" secondAttribute="leading" constant="15" id="PaA-vt-6Dc"/>
+                                                <constraint firstAttribute="bottom" secondItem="e5h-TL-obW" secondAttribute="bottom" constant="10" id="RE6-5r-0hr"/>
+                                                <constraint firstAttribute="trailing" secondItem="e5h-TL-obW" secondAttribute="trailing" constant="15" id="wY1-ey-xlP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="tx0-uf-ch7" id="Ng5-iQ-e6s"/>
+                                            <outlet property="authorLabelHeight" destination="OZv-No-WXJ" id="JLV-oO-hMo"/>
+                                            <outlet property="contentLabel" destination="JKx-h5-Ncp" id="Xok-5n-0ne"/>
+                                            <outlet property="leftMargin" destination="PaA-vt-6Dc" id="y7b-qt-V2v"/>
+                                            <outlet property="rightMargin" destination="wY1-ey-xlP" id="Raz-Ct-VHc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -114,6 +159,9 @@ Expressions</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sNs-YD-ZAU"/>
                     </view>
+                    <connections>
+                        <outlet property="storiesTableView" destination="Pub-k5-Wqt" id="AeO-U2-eZs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="map-g3-AFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -135,7 +183,7 @@ Expressions</string>
                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9yN-NF-WZe"/>
-                                    <constraint firstAttribute="width" constant="100" id="M1M-Zo-T5B"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="M1M-Zo-T5B"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <state key="normal" title="Back">

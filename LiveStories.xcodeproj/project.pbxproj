@@ -21,6 +21,7 @@
 		0596AEFB207E42F0003E2726 /* SwipeFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AEFA207E42F0003E2726 /* SwipeFront.swift */; };
 		0596AEFE207E4843003E2726 /* LiveStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AEFD207E4843003E2726 /* LiveStory.swift */; };
 		0596AF03207F7FF0003E2726 /* ImagePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AF02207F7FF0003E2726 /* ImagePopoverViewController.swift */; };
+		0596AF072080A6B3003E2726 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AF062080A6B3003E2726 /* StoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		0596AEFA207E42F0003E2726 /* SwipeFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFront.swift; sourceTree = "<group>"; };
 		0596AEFD207E4843003E2726 /* LiveStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStory.swift; sourceTree = "<group>"; };
 		0596AF02207F7FF0003E2726 /* ImagePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopoverViewController.swift; sourceTree = "<group>"; };
+		0596AF062080A6B3003E2726 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				0596AEDA207E33D6003E2726 /* LiveStoriesMainController.swift */,
 				0596AF02207F7FF0003E2726 /* ImagePopoverViewController.swift */,
+				0596AF062080A6B3003E2726 /* StoryCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				0596AEF0207E3848003E2726 /* BackwardSegue.swift in Sources */,
 				0596AED9207E33D6003E2726 /* AppDelegate.swift in Sources */,
 				0596AEF3207E3A5C003E2726 /* UIView+addShadow.swift in Sources */,
+				0596AF072080A6B3003E2726 /* StoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,13 +8,16 @@
 
 import UIKit
 
-class LiveStoriesMainController: UIViewController {
+class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var storiesTableView: UITableView!
+    
     var swipeBack = SwipeBack()
     var swipeGestureRecognizer: UIPanGestureRecognizer!
     
     var swipeFront = SwipeFront()
     var liveStory: LiveStory!
     var num: Int = 208
+    var story = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +68,17 @@ class LiveStoriesMainController: UIViewController {
         imagePopover.didMove(toParentViewController: self)
         
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return story.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StoryCell", for: indexPath) as! StoryCell
+        
+        return cell
+    }
+    
     @IBAction func panned(gestureRecognizer: UIPanGestureRecognizer) {
         if gestureRecognizer.location(in: self.view).x <= 0.3 * UIScreen.main.bounds.size.width {
             let gestureState = swipeBack.backSwipe(gestureRecognizer: gestureRecognizer, sourceViewController: self)
