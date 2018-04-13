@@ -15,9 +15,8 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
     var swipeGestureRecognizer: UIPanGestureRecognizer!
     
     var swipeFront = SwipeFront()
-    var liveStory: LiveStory!
     var num: Int = 208
-    var story = [String]()
+    var transcript = [Message]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +24,32 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
         swipeGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panned))
         self.view.addGestureRecognizer(swipeGestureRecognizer)
         
+        storiesTableView.delegate = self
+        storiesTableView.dataSource = self
+        
         APIRequest(for: num) { (liveStory, error) in
-            if error == nil && liveStory != nil {
-                self.liveStory = liveStory
-                print(self.liveStory.transcript)
+            if let liveStory = liveStory {
+                self.transcript = liveStory.transcript.components(separatedBy: "\n").map { self.getMessage(from: $0) }
+                self.storiesTableView.reloadData()
             }
         }
+    }
+    
+    func getMessage(from text: String) -> Message {
+        let typeOfBrackets = [["<<", ">>"], ["[[", "]]"], ["{{", "}}"], ["((", "))"], ["<<", ">>"],]
         
+        for breacket in typeOfBrackets {
+            if let text = text.slice(from: breacket[0], to: breacket[1])  {
+                if let author = text.slice(to: ": "), let content = text.slice(from: ": ") {
+                    return Message(content: content, author: author, type: .comment)
+                }
+                return Message(content: text, author: nil, type: .comment)
+            }
+        }
+        if let author = text.slice(to: ": "), let content = text.slice(from: ": ") {
+            return Message(content: content, author: author, type: .voice)
+        }
+        return Message(content: text, author: nil, type: .comment)
     }
     
     func APIRequest(for num: Int, completionHandler: @escaping (LiveStory?, Error?) -> Void ) {
@@ -70,7 +88,7 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return story.count
+        return transcript.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

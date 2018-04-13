@@ -22,6 +22,8 @@
 		0596AEFE207E4843003E2726 /* LiveStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AEFD207E4843003E2726 /* LiveStory.swift */; };
 		0596AF03207F7FF0003E2726 /* ImagePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AF02207F7FF0003E2726 /* ImagePopoverViewController.swift */; };
 		0596AF072080A6B3003E2726 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AF062080A6B3003E2726 /* StoryCell.swift */; };
+		0596AF092080AB51003E2726 /* String+slice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AF082080AB51003E2726 /* String+slice.swift */; };
+		0596AF0B2080B981003E2726 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AF0A2080B981003E2726 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		0596AEFD207E4843003E2726 /* LiveStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStory.swift; sourceTree = "<group>"; };
 		0596AF02207F7FF0003E2726 /* ImagePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopoverViewController.swift; sourceTree = "<group>"; };
 		0596AF062080A6B3003E2726 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
+		0596AF082080AB51003E2726 /* String+slice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+slice.swift"; sourceTree = "<group>"; };
+		0596AF0A2080B981003E2726 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 				0596AEF6207E3A7C003E2726 /* UIView+backShadowAnimation.swift */,
 				0596AEF8207E4192003E2726 /* SwipeBack.swift */,
 				0596AEFA207E42F0003E2726 /* SwipeFront.swift */,
+				0596AF082080AB51003E2726 /* String+slice.swift */,
 			);
 			path = public;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				0596AEFD207E4843003E2726 /* LiveStory.swift */,
+				0596AF0A2080B981003E2726 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +207,7 @@
 				0596AEDB207E33D6003E2726 /* LiveStoriesMainController.swift in Sources */,
 				0596AEF5207E3A66003E2726 /* customSegue.swift in Sources */,
 				0596AEFE207E4843003E2726 /* LiveStory.swift in Sources */,
+				0596AF092080AB51003E2726 /* String+slice.swift in Sources */,
 				0596AEF9207E4192003E2726 /* SwipeBack.swift in Sources */,
 				0596AF03207F7FF0003E2726 /* ImagePopoverViewController.swift in Sources */,
 				0596AEFB207E42F0003E2726 /* SwipeFront.swift in Sources */,
@@ -209,6 +216,7 @@
 				0596AED9207E33D6003E2726 /* AppDelegate.swift in Sources */,
 				0596AEF3207E3A5C003E2726 /* UIView+addShadow.swift in Sources */,
 				0596AF072080A6B3003E2726 /* StoryCell.swift in Sources */,
+				0596AF0B2080B981003E2726 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
