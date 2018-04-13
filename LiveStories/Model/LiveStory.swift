@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Employee: Codable {
+struct LiveStory: Codable {
     var month: String
     var num: Int
     var link: String
@@ -20,4 +20,8 @@ class Employee: Codable {
     var img: String
     var title: String
     var day: String
+    
+    static func endpointFor(_ num: Int) -> String {
+        return "https://xkcd.com/\(num)/info.0.json"
+    }
 }
