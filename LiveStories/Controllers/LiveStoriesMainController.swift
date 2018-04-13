@@ -10,6 +10,9 @@ import UIKit
 
 class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var storiesTableView: UITableView!
+    @IBOutlet weak var imageButton: UIImageView!
+    @IBOutlet weak var titleLabels: UILabel!
+    @IBOutlet weak var titleBar: UIView!
     
     var swipeBack = SwipeBack()
     var swipeGestureRecognizer: UIPanGestureRecognizer!
@@ -27,10 +30,31 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
         storiesTableView.delegate = self
         storiesTableView.dataSource = self
         
+        imageButton.isHidden = true
+        
+        titleBar.addShadow()
+        titleBar.layer.shadowOffset = CGSize(width: 0, height: 3)
+        
         APIRequest(for: num) { (liveStory, error) in
             if let liveStory = liveStory {
                 self.transcript = liveStory.transcript.components(separatedBy: "\n").map { self.getMessage(from: $0) }
-                self.storiesTableView.reloadData()
+                DispatchQueue.main.async {
+                    self.storiesTableView.reloadData()
+                }
+                
+                self.load_image(liveStory.img) { (image) in
+                    if let image = image {
+                        DispatchQueue.main.async {
+                            self.imageButton.image = image
+                            self.imageButton.isHidden = false
+                        }
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    self.titleLabels.text = liveStory.title
+                }
+                
             }
         }
     }
@@ -50,6 +74,16 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
             return Message(content: content, author: author, type: .voice)
         }
         return Message(content: text, author: nil, type: .comment)
+    }
+    
+    func load_image(_ imageUrlString: String, completionHandler: @escaping (UIImage?) -> Void ) {
+        if let url = URL(string: imageUrlString) {
+            let data = try? Data(contentsOf: url)
+            
+            if let imageData = data {
+                completionHandler(UIImage(data: imageData))
+            }
+        }
     }
     
     func APIRequest(for num: Int, completionHandler: @escaping (LiveStory?, Error?) -> Void ) {
@@ -85,6 +119,8 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
         self.view.addSubview(imagePopover.view)
         imagePopover.didMove(toParentViewController: self)
         
+        imagePopover.imageView.image = imageButton.image
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,6 +129,16 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StoryCell", for: indexPath) as! StoryCell
+        let currentMessage = transcript[indexPath.row]
+        
+        if let author = currentMessage.author {
+            cell.authorLabel.text = author
+            cell.authorLabelHeight.constant = 25
+        } else {
+             cell.authorLabelHeight.constant = 0
+        }
+      
+        cell.contentLabel.text = currentMessage.content
         
         return cell
     }
