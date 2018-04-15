@@ -19,8 +19,11 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
     
     var swipeFront = SwipeFront()
     var num: Int = 208
+
     var transcript = [Message]()
-    var isLeft = true
+    var currentAuthor: String!
+    var authors = [Author]()
+    var isLeft = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +42,7 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
         APIRequest(for: num) { (liveStory, error) in
             if let liveStory = liveStory {
                 self.transcript = liveStory.transcript.components(separatedBy: "\n").map { self.getMessage(from: $0) }
+                
                 DispatchQueue.main.async {
                     self.storiesTableView.reloadData()
                 }
@@ -55,7 +59,6 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
                 DispatchQueue.main.async {
                     self.titleLabels.text = liveStory.title
                 }
-                
             }
         }
     }
@@ -75,7 +78,15 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
             if author.lowercased() == "narrator" {
                 return Message(content: content, author: author, type: .comment)
             }
-            return Message(content: content, author: author, type: .voice)
+            if currentAuthor != author {
+                isLeft = !isLeft
+                currentAuthor = author
+            }
+            if isLeft {
+                return Message(content: content, author: author, type: .leftVoice)
+            }
+            return Message(content: content, author: author, type: .rightVoice)
+            
         }
         return Message(content: text, author: nil, type: .comment)
     }
@@ -135,12 +146,27 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
         let cell = tableView.dequeueReusableCell(withIdentifier: "StoryCell", for: indexPath) as! StoryCell
         let currentMessage = transcript[indexPath.row]
         
-        if let author = currentMessage.author {
+        if let author = currentMessage.author, currentMessage.type != .comment {
             cell.authorLabel.text = author
             cell.authorLabelHeight.constant = 25
+            if let i = authors.index(where: { $0.name == author }) {
+                cell.messageView.backgroundColor = authors[i].colour
+                cell.rightCorner.backgroundColor = authors[i].colour
+                cell.leftCorner.backgroundColor = authors[i].colour
+            } else {
+                let colour = createColour()
+                cell.messageView.backgroundColor = colour
+                cell.rightCorner.backgroundColor = colour
+                cell.leftCorner.backgroundColor = colour
+                isLeft = !isLeft
+                
+                let newAuthor = Author(name: author, colour: colour)
+                authors.append(newAuthor)
+            }
         } else {
              cell.authorLabel.text = ""
              cell.authorLabelHeight.constant = 0
+             cell.messageView.backgroundColor = .lightGray
         }
         
         switch currentMessage.type {
@@ -151,28 +177,53 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
             cell.rightMarginGraterThan.priority = UILayoutPriority(rawValue: 999)
             cell.rightMargin.priority = UILayoutPriority(rawValue: 1)
             cell.leftMargin.priority = UILayoutPriority(rawValue: 1)
-            isLeft = true
-        case .voice:
-            if isLeft {
-                cell.leftMargin.priority = UILayoutPriority(rawValue: 999)
-                cell.rightMarginGraterThan.constant = 75
-                cell.rightMarginGraterThan.priority = UILayoutPriority(rawValue: 999)
-                cell.leftMarginGreaterThan.priority = UILayoutPriority(rawValue: 1)
-                cell.rightMargin.priority = UILayoutPriority(rawValue: 1)
-                isLeft = false
-            } else {
-                cell.rightMarginGraterThan.priority = UILayoutPriority(rawValue: 1)
-                cell.leftMarginGreaterThan.constant = 75
-                cell.leftMarginGreaterThan.priority = UILayoutPriority(rawValue: 999)
-                cell.leftMargin.priority = UILayoutPriority(rawValue: 1)
-                cell.rightMargin.priority = UILayoutPriority(rawValue: 999)
-                isLeft = true
-            }
+            cell.messageView.backgroundColor = .lightGray
+            cell.leftCorner.isHidden = true
+            cell.rightCorner.isHidden = true
+        case .leftVoice:
+            cell.leftMargin.priority = UILayoutPriority(rawValue: 999)
+            cell.rightMarginGraterThan.constant = 75
+            cell.rightMarginGraterThan.priority = UILayoutPriority(rawValue: 999)
+            cell.leftMarginGreaterThan.priority = UILayoutPriority(rawValue: 1)
+            cell.rightMargin.priority = UILayoutPriority(rawValue: 1)
+            cell.leftCorner.isHidden = false
+            cell.rightCorner.isHidden = true
+        case .rightVoice:
+            cell.rightMarginGraterThan.priority = UILayoutPriority(rawValue: 1)
+            cell.leftMarginGreaterThan.constant = 75
+            cell.leftMarginGreaterThan.priority = UILayoutPriority(rawValue: 999)
+            cell.leftMargin.priority = UILayoutPriority(rawValue: 1)
+            cell.rightMargin.priority = UILayoutPriority(rawValue: 999)
+            cell.leftCorner.isHidden = true
+            cell.rightCorner.isHidden = false
         }
 
         cell.contentLabel.text = currentMessage.content
         
         return cell
+    }
+    
+    func createColour() -> UIColor {
+        switch authors.count {
+        case 0:
+            return .cyan
+        case 1:
+            return .yellow
+        case 2:
+            return .green
+        case 3:
+            return .orange
+        case 4:
+            return .red
+        case 5:
+            return .purple
+        case 6:
+            return .blue
+        case 7:
+            return .magenta
+        default:
+            return .lightGray
+        }
     }
     
     @IBAction func panned(gestureRecognizer: UIPanGestureRecognizer) {

@@ -14,13 +14,16 @@ class StoryCell: UITableViewCell {
     @IBOutlet weak var rightMargin: NSLayoutConstraint!
     @IBOutlet weak var leftMargin: NSLayoutConstraint!
     @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var messageView: UIStackView!
+    @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var leftMarginGreaterThan: NSLayoutConstraint!
     @IBOutlet weak var rightMarginGraterThan: NSLayoutConstraint!
+    @IBOutlet weak var leftCorner: UIView!
+    @IBOutlet weak var rightCorner: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        messageView.layer.cornerRadius = 15
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

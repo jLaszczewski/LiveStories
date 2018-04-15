@@ -9,7 +9,8 @@
 import Foundation
 
 enum TypeOfMessage {
-    case voice
+    case leftVoice
+    case rightVoice
     case comment
 }
 

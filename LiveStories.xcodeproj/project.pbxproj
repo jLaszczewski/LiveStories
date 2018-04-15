@@ -24,6 +24,7 @@
 		0596AF072080A6B3003E2726 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AF062080A6B3003E2726 /* StoryCell.swift */; };
 		0596AF092080AB51003E2726 /* String+slice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AF082080AB51003E2726 /* String+slice.swift */; };
 		0596AF0B2080B981003E2726 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AF0A2080B981003E2726 /* Message.swift */; };
+		0596AF0D2083A554003E2726 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0596AF0C2083A554003E2726 /* Author.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		0596AF062080A6B3003E2726 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		0596AF082080AB51003E2726 /* String+slice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+slice.swift"; sourceTree = "<group>"; };
 		0596AF0A2080B981003E2726 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		0596AF0C2083A554003E2726 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			children = (
 				0596AEFD207E4843003E2726 /* LiveStory.swift */,
 				0596AF0A2080B981003E2726 /* Message.swift */,
+				0596AF0C2083A554003E2726 /* Author.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				0596AF03207F7FF0003E2726 /* ImagePopoverViewController.swift in Sources */,
 				0596AEFB207E42F0003E2726 /* SwipeFront.swift in Sources */,
 				0596AEF7207E3A7C003E2726 /* UIView+backShadowAnimation.swift in Sources */,
+				0596AF0D2083A554003E2726 /* Author.swift in Sources */,
 				0596AEF0207E3848003E2726 /* BackwardSegue.swift in Sources */,
 				0596AED9207E33D6003E2726 /* AppDelegate.swift in Sources */,
 				0596AEF3207E3A5C003E2726 /* UIView+addShadow.swift in Sources */,
