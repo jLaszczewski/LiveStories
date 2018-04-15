@@ -22,6 +22,7 @@ class SwipeFront: NSObject {
     func frontSwipe(gestureRecognizer: UIPanGestureRecognizer, sourceViewController: UIViewController) -> UIGestureRecognizerState {
         switch gestureRecognizer.state {
         case .began:
+            AppDelegate.shared.num = AppDelegate.shared.num + 1
             self.sourceViewController = sourceViewController
             destinationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainStoryboard") as! LiveStoriesMainController
             
@@ -75,6 +76,7 @@ class SwipeFront: NSObject {
                         self.sourceView.frame.origin.x = 0
                         self.destinationView.frame.origin.x = self.destinationViewXPosition
                     }) { (finish) -> Void in
+                        AppDelegate.shared.num = AppDelegate.shared.num - 1
                         self.window = nil
                         self.destinationView.removeFromSuperview()
                     }

@@ -216,7 +216,11 @@ Expressions</string>
                         <viewLayoutGuide key="safeArea" id="sNs-YD-ZAU"/>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="Qvh-km-ky6" id="pli-tf-HJe"/>
+                        <outlet property="firstButton" destination="d6F-ny-c7N" id="Wpx-Bi-uVb"/>
                         <outlet property="imageButton" destination="T4v-FR-PMy" id="3eb-9i-C5B"/>
+                        <outlet property="lastButton" destination="azi-HC-Pj4" id="VbA-cv-bAd"/>
+                        <outlet property="nextButton" destination="CHV-9x-HMT" id="v1U-tO-B6C"/>
                         <outlet property="storiesTableView" destination="Pub-k5-Wqt" id="AeO-U2-eZs"/>
                         <outlet property="titleBar" destination="R7f-sc-pGB" id="1JC-y0-AMg"/>
                         <outlet property="titleLabels" destination="ZOv-PE-Lpd" id="Wie-jt-QsV"/>

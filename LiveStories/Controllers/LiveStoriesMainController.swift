@@ -13,12 +13,16 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var imageButton: UIImageView!
     @IBOutlet weak var titleLabels: UILabel!
     @IBOutlet weak var titleBar: UIView!
+    @IBOutlet weak var nextButton: UIBarButtonItem!
+    @IBOutlet weak var lastButton: UIBarButtonItem!
+    @IBOutlet weak var firstButton: UIBarButtonItem!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     
     var swipeBack = SwipeBack()
     var swipeGestureRecognizer: UIPanGestureRecognizer!
     
     var swipeFront = SwipeFront()
-    var num: Int = 208
+    var num: Int!
 
     var transcript = [Message]()
     var currentAuthor: String!
@@ -38,6 +42,16 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
         
         titleBar.addShadow()
         titleBar.layer.shadowOffset = CGSize(width: 0, height: 3)
+        
+        num = AppDelegate.shared.num
+        
+        if num == 1 {
+            backButton.isEnabled = false
+        }
+        
+        if num == 1980 {
+            nextButton.isEnabled = false
+        }
         
         APIRequest(for: num) { (liveStory, error) in
             if let liveStory = liveStory {
@@ -226,22 +240,42 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "backSegue":
+            AppDelegate.shared.num = self.num - 1
+        case "firstSegue":
+             AppDelegate.shared.num = 1
+        case "lastSegue":
+             AppDelegate.shared.num = 1980
+        case "nextSegue":
+             AppDelegate.shared.num = self.num + 1
+        default:
+            break
+        }
+    }
+    
     @IBAction func panned(gestureRecognizer: UIPanGestureRecognizer) {
-        if gestureRecognizer.location(in: self.view).x <= 0.3 * UIScreen.main.bounds.size.width {
-            let gestureState = swipeBack.backSwipe(gestureRecognizer: gestureRecognizer, sourceViewController: self)
-            switch gestureState {
-            case .cancelled, .ended, .failed:
-                swipeBack = SwipeBack()
-            default:
-                break
+        
+        if gestureRecognizer.location(in: self.view).x <= 0.4 * UIScreen.main.bounds.size.width {
+            if num > 1 {
+                let gestureState = swipeBack.backSwipe(gestureRecognizer: gestureRecognizer, sourceViewController: self)
+                switch gestureState {
+                case .cancelled, .ended, .failed:
+                    swipeBack = SwipeBack()
+                default:
+                    break
+                }
             }
-        } else if gestureRecognizer.location(in: self.view).x >= 0.3 * UIScreen.main.bounds.size.width {
-            let gestureState = swipeFront.frontSwipe(gestureRecognizer: gestureRecognizer, sourceViewController: self)
-            switch gestureState {
-            case .cancelled, .ended, .failed:
-                swipeFront = SwipeFront()
-            default:
-                break
+        } else if gestureRecognizer.location(in: self.view).x >= 0.4 * UIScreen.main.bounds.size.width {
+            if num < 1980 {
+                let gestureState = swipeFront.frontSwipe(gestureRecognizer: gestureRecognizer, sourceViewController: self)
+                switch gestureState {
+                case .cancelled, .ended, .failed:
+                    swipeFront = SwipeFront()
+                default:
+                    break
+                }
             }
         }
     }

@@ -22,6 +22,7 @@ class SwipeBack: NSObject {
     func backSwipe(gestureRecognizer: UIPanGestureRecognizer, sourceViewController: UIViewController) -> UIGestureRecognizerState {
         switch gestureRecognizer.state {
         case .began:
+            AppDelegate.shared.num = AppDelegate.shared.num - 1
             self.sourceViewController = sourceViewController
             destinationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainStoryboard") as! LiveStoriesMainController
             
@@ -71,10 +72,12 @@ class SwipeBack: NSObject {
                     customSegue(destinationViewController: self.destinationViewController)
                 }
             } else {
+                
                 UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: { () -> Void in
                     self.sourceView.frame.origin.x = 0
                     self.destinationView.frame.origin.x = self.destinationViewXPosition
                 }) { (finish) -> Void in
+                    AppDelegate.shared.num = AppDelegate.shared.num + 1
                     self.window = nil
                     self.destinationView.removeFromSuperview()
                 }
