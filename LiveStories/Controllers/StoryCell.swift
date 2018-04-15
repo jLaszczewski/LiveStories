@@ -14,6 +14,9 @@ class StoryCell: UITableViewCell {
     @IBOutlet weak var rightMargin: NSLayoutConstraint!
     @IBOutlet weak var leftMargin: NSLayoutConstraint!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var messageView: UIStackView!
+    @IBOutlet weak var leftMarginGreaterThan: NSLayoutConstraint!
+    @IBOutlet weak var rightMarginGraterThan: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -20,6 +20,7 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
     var swipeFront = SwipeFront()
     var num: Int = 208
     var transcript = [Message]()
+    var isLeft = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +72,9 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
             }
         }
         if let author = text.slice(to: ": "), let content = text.slice(from: ": ") {
+            if author.lowercased() == "narrator" {
+                return Message(content: content, author: author, type: .comment)
+            }
             return Message(content: content, author: author, type: .voice)
         }
         return Message(content: text, author: nil, type: .comment)
@@ -135,9 +139,37 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
             cell.authorLabel.text = author
             cell.authorLabelHeight.constant = 25
         } else {
+             cell.authorLabel.text = ""
              cell.authorLabelHeight.constant = 0
         }
-      
+        
+        switch currentMessage.type {
+        case .comment:
+            cell.leftMarginGreaterThan.constant = 50
+            cell.leftMarginGreaterThan.priority = UILayoutPriority(rawValue: 999)
+            cell.rightMarginGraterThan.constant = 50
+            cell.rightMarginGraterThan.priority = UILayoutPriority(rawValue: 999)
+            cell.rightMargin.priority = UILayoutPriority(rawValue: 1)
+            cell.leftMargin.priority = UILayoutPriority(rawValue: 1)
+            isLeft = true
+        case .voice:
+            if isLeft {
+                cell.leftMargin.priority = UILayoutPriority(rawValue: 999)
+                cell.rightMarginGraterThan.constant = 75
+                cell.rightMarginGraterThan.priority = UILayoutPriority(rawValue: 999)
+                cell.leftMarginGreaterThan.priority = UILayoutPriority(rawValue: 1)
+                cell.rightMargin.priority = UILayoutPriority(rawValue: 1)
+                isLeft = false
+            } else {
+                cell.rightMarginGraterThan.priority = UILayoutPriority(rawValue: 1)
+                cell.leftMarginGreaterThan.constant = 75
+                cell.leftMarginGreaterThan.priority = UILayoutPriority(rawValue: 999)
+                cell.leftMargin.priority = UILayoutPriority(rawValue: 1)
+                cell.rightMargin.priority = UILayoutPriority(rawValue: 999)
+                isLeft = true
+            }
+        }
+
         cell.contentLabel.text = currentMessage.content
         
         return cell

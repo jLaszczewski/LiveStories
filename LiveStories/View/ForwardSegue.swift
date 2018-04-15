@@ -33,6 +33,5 @@ class ForwardSegue: UIStoryboardSegue {
         }) { (finish) -> Void in
             customSegue(destinationViewController: self.destination)
         }
-        
     }
 }
