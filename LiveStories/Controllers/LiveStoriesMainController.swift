@@ -56,7 +56,7 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
         APIRequest(for: num) { (liveStory, error) in
             if let liveStory = liveStory {
                 self.transcript = liveStory.transcript.components(separatedBy: "\n").map { self.getMessage(from: $0) }
-                
+                self.transcript = self.transcript.filter { $0.content != "" }
                 DispatchQueue.main.async {
                     self.storiesTableView.reloadData()
                 }
@@ -78,7 +78,7 @@ class LiveStoriesMainController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func getMessage(from text: String) -> Message {
-        let typeOfBrackets = [["<<", ">>"], ["[[", "]]"], ["{{", "}}"], ["((", "))"], ["<<", ">>"],]
+        let typeOfBrackets = [["<<", ">>"], ["[[", "]]"], ["{{", "}}"], ["((", "))"], ["<<", ">>"]]
         
         for breacket in typeOfBrackets {
             if let text = text.slice(from: breacket[0], to: breacket[1])  {
